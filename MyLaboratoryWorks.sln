@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LaboratoryWork1", "LaboratoryWork1", "{A0BB28B7-7ACE-47B3-A4E1-7006E8126738}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LaboratoryWork2", "LaboratoryWork2", "{CFF50672-5D85-46D0-BBC3-EC24DFD72AFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LaboratoryWork3", "LaboratoryWork3", "{96D79D70-E466-496F-819E-7EA7C021E523}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedGeometricFiguresApp", "AdvancedGeometricFiguresApp\AdvancedGeometricFiguresApp.csproj", "{22E22828-FC33-42C5-B6E9-D0DC2C8DF300}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexArithmeticApp", "ComplexArithmeticApp\ComplexArithmeticApp.csproj", "{546082FB-FE05-4533-BBCA-22CED51E9EC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentApp", "StudentApp\StudentApp.csproj", "{A9422B87-59A9-4A84-906E-2E1EDCAE0A70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeometricFiguresApp", "GeometricFiguresApp\GeometricFiguresApp.csproj", "{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22E22828-FC33-42C5-B6E9-D0DC2C8DF300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22E22828-FC33-42C5-B6E9-D0DC2C8DF300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22E22828-FC33-42C5-B6E9-D0DC2C8DF300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22E22828-FC33-42C5-B6E9-D0DC2C8DF300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{546082FB-FE05-4533-BBCA-22CED51E9EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546082FB-FE05-4533-BBCA-22CED51E9EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546082FB-FE05-4533-BBCA-22CED51E9EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546082FB-FE05-4533-BBCA-22CED51E9EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9422B87-59A9-4A84-906E-2E1EDCAE0A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9422B87-59A9-4A84-906E-2E1EDCAE0A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9422B87-59A9-4A84-906E-2E1EDCAE0A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9422B87-59A9-4A84-906E-2E1EDCAE0A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{22E22828-FC33-42C5-B6E9-D0DC2C8DF300} = {96D79D70-E466-496F-819E-7EA7C021E523}
+		{546082FB-FE05-4533-BBCA-22CED51E9EC5} = {A0BB28B7-7ACE-47B3-A4E1-7006E8126738}
+		{A9422B87-59A9-4A84-906E-2E1EDCAE0A70} = {A0BB28B7-7ACE-47B3-A4E1-7006E8126738}
+		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4} = {CFF50672-5D85-46D0-BBC3-EC24DFD72AFE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51272D1A-C473-44A4-BA27-343C554034D0}
+	EndGlobalSection
+EndGlobal
