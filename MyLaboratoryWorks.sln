@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentApp", "StudentApp\St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeometricFiguresApp", "GeometricFiguresApp\GeometricFiguresApp.csproj", "{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedDrawingFiguresApp", "AdvancedDrawingFiguresApp\AdvancedDrawingFiguresApp.csproj", "{DE0734D1-7736-486D-92AB-4739AE22D12A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE0734D1-7736-486D-92AB-4739AE22D12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE0734D1-7736-486D-92AB-4739AE22D12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE0734D1-7736-486D-92AB-4739AE22D12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE0734D1-7736-486D-92AB-4739AE22D12A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{546082FB-FE05-4533-BBCA-22CED51E9EC5} = {A0BB28B7-7ACE-47B3-A4E1-7006E8126738}
 		{A9422B87-59A9-4A84-906E-2E1EDCAE0A70} = {A0BB28B7-7ACE-47B3-A4E1-7006E8126738}
 		{3B4DD2F7-0E04-4411-9C9C-9D0129D6E5C4} = {CFF50672-5D85-46D0-BBC3-EC24DFD72AFE}
+		{DE0734D1-7736-486D-92AB-4739AE22D12A} = {96D79D70-E466-496F-819E-7EA7C021E523}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51272D1A-C473-44A4-BA27-343C554034D0}
