@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace GeometricFigures
+﻿namespace GeometricFigures
 {
     public abstract class MyGeometricFigure
     {
@@ -16,7 +14,7 @@ namespace GeometricFigures
         }
     }
 
-    public class Circle : MyGeometricFigure
+    public class MyCircle : MyGeometricFigure
     {
         public double Radius { get; set; }
         public override double GetArea()
@@ -46,7 +44,7 @@ namespace GeometricFigures
         }
     }
 
-    public class RegularPolygon : MyGeometricFigure
+    public class MyRegularPolygon : MyGeometricFigure
     {
         public double SideLength { get; set; }
         protected virtual double NumberOfSides { get; }
@@ -90,7 +88,7 @@ namespace GeometricFigures
         }
     }
 
-    public class Triangle : MyGeometricFigure
+    public class MyTriangle : MyGeometricFigure
     {
         public double AB { get; set; }
         public double BC { get; set; }
@@ -134,7 +132,7 @@ namespace GeometricFigures
         }
     }
 
-    public class Quadrangle : MyGeometricFigure
+    public class MyQuadrangle : MyGeometricFigure
     {
         public double AB { get; set; }
         public double BC { get; set; }
@@ -172,7 +170,7 @@ namespace GeometricFigures
         }
     }
 
-    public class Rectangle : MyGeometricFigure
+    public class MyRectangle : MyGeometricFigure
     {
         public double Width { get; set; }
         public double Height { get; set; }
@@ -207,7 +205,7 @@ namespace GeometricFigures
         }
     }
 
-    public class Trapeze : Quadrangle
+    public class MyTrapeze : MyQuadrangle
     {
         public double Height { get; set; }
 
@@ -229,7 +227,7 @@ namespace GeometricFigures
         }
     }
 
-    public class Parallelogram : Quadrangle
+    public class MyParallelogram : MyQuadrangle
     {
         public double Angle { get; set; }
         public override double GetArea()
@@ -250,7 +248,7 @@ namespace GeometricFigures
         }
     }
 
-    public class Rhombus : Parallelogram
+    public class MyRhombus : MyParallelogram
     {
         public override double GetArea()
         {
@@ -275,7 +273,7 @@ namespace GeometricFigures
 
     }
 
-    public class Square : RegularPolygon
+    public class MySquare : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 4.0;
         /*public Square()
@@ -284,7 +282,7 @@ namespace GeometricFigures
         }*/
     }
 
-    public class Pentagon : RegularPolygon
+    public class Pentagon : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 5.0;
         /*public Pentagon()
@@ -293,7 +291,7 @@ namespace GeometricFigures
         }*/
     }
 
-    public class Hexagon : RegularPolygon
+    public class Hexagon : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 6.0;
         /*public Hexagon()
@@ -302,7 +300,7 @@ namespace GeometricFigures
         }*/
     }
 
-    public class Heptagon : RegularPolygon
+    public class Heptagon : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 7.0;
         /*public Heptagon()
@@ -311,7 +309,7 @@ namespace GeometricFigures
         }*/
     }
 
-    public class Octagon : RegularPolygon
+    public class Octagon : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 8.0;
         /*public Octagon()
@@ -320,7 +318,7 @@ namespace GeometricFigures
         }*/
     }
 
-    public class Nonagon : RegularPolygon
+    public class Nonagon : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 9.0;
         /*public Nonagon()
@@ -329,7 +327,7 @@ namespace GeometricFigures
         }*/
     }
 
-    public class Decagon : RegularPolygon
+    public class Decagon : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 10.0;
         /*public Decagon()

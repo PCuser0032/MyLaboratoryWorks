@@ -5,9 +5,16 @@ Console.WriteLine("Created by Kozlov D., group VPI-31.");
 
 Console.WriteLine();
 
-Rectangle Rectangle1 = new Rectangle() { Name = "Прямоугольник ABCD", Width = 120.0, Height = 80.0, Color = System.Drawing.Color.Red, Position = new System.Drawing.Point(50, 50) }; 
+MyRectangle Rectangle1 = new MyRectangle() { Name = "Прямоугольник ABCD", Width = 120.0, Height = 80.0, Color = Color.Red, Position = new Point(50, 50) };
 
+Form MyForm = new Form()
+{
+    Text = "Advanced Drawing Figures",
+    Size = new Size(800, 800),
+    StartPosition = FormStartPosition.CenterScreen
+};
 
+Application.Run(MyForm);
 
 /*Circle Circle1 = new Circle() { Name = "Окружность", Radius = 5.0 };
 
