@@ -7,12 +7,47 @@ Console.WriteLine();
 
 MyRectangle Rectangle1 = new MyRectangle() { Name = "Прямоугольник ABCD", Width = 120.0, Height = 80.0, Color = Color.Red, Position = new Point(50, 50) };
 
+MyGeometricFigure[] MyFigures = {
+    new MyRectangle() {
+    Name = "Прямоугольник ABCD",
+    Width = 120.0,
+    Height = 80.0,
+    Color = Color.Red,
+    Position = new Point(50, 50)
+    },
+    new MyRectangle() {
+        Name = "Прямоугольник EFGH",
+        Width = 55.0,
+        Height = 25.0,
+        Color = Color.Green,
+        Position = new Point(50, 100)
+    },
+    new MyRectangle() {
+        Name = "Прямоугольник IJKL",
+        Width = 225.0,
+        Height = 105.0,
+        Color = Color.Purple,
+        Position = new Point(50, 150)
+    }
+};
+
 Form MyForm = new Form()
 {
+    BackColor = Color.FromArgb(156, 156, 156),
     Text = "Advanced Drawing Figures",
     Size = new Size(800, 800),
     StartPosition = FormStartPosition.CenterScreen
 };
+
+void FormPaint(object sender, PaintEventArgs e)
+{
+    foreach (MyGeometricFigure Figure in MyFigures)
+    {
+        Figure.DrawFigure(e.Graphics);
+    }
+}
+
+MyForm.Paint += FormPaint;
 
 Application.Run(MyForm);
 

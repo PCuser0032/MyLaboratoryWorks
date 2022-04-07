@@ -4,11 +4,12 @@
     {
         public string? Name { get; set; }
         public Color Color { get; set; }
-        public Point Position { get; set; }
+        public PointF Position { get; set; }
         public abstract double GetArea();
         public abstract double GetPerimeter();
-        public abstract Point GetCenter();
-        public string GetName()
+        public abstract PointF GetCenter();
+        public abstract void DrawFigure(Graphics gr);
+        public string? GetName()
         {
             return Name;
         }
@@ -27,9 +28,15 @@
             return 2.0 * Math.PI * Radius;
         }
 
-        public override Point GetCenter()
+        public override PointF GetCenter()
         {
-            return new Point((int)(Position.X + Radius), (int)(Position.Y + Radius));
+            return new PointF((float)(Position.X + Radius), (float)(Position.Y + Radius));
+        }
+
+        public override void DrawFigure(Graphics gr)
+        {
+            gr.DrawEllipse(new Pen(Color, 3), new RectangleF((float)Position.X, (float)Position.Y, (float)(2.0 * Radius), (float)(2.0 * Radius)));
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
         }
 
         public void GetInfo()
@@ -49,6 +56,12 @@
         public double SideLength { get; set; }
         protected virtual double NumberOfSides { get; }
         // public double NumberOfSides;
+        public PointF[] CoordinatesOfTheVertices;
+
+        public MyRegularPolygon()
+        {
+            CoordinatesOfTheVertices = new PointF[(int)NumberOfSides];
+        }
 
         public override double GetArea()
         {
@@ -69,9 +82,30 @@
             return SideLength * 1 / 2.0 * 1.0 / Math.Sin(Math.PI / NumberOfSides);
         }
 
-        public override Point GetCenter()
+        public override PointF GetCenter()
         {
-            return new Point((int)(Position.X + GetCircumscribedCircleRadius()), (int)(Position.Y + GetCircumscribedCircleRadius()));
+            return new PointF((float)(Position.X + GetCircumscribedCircleRadius()), (float)(Position.Y + GetCircumscribedCircleRadius()));
+        }
+
+        public void SetCoordinatesOfTheVertices()
+        {
+            for (long i = 0; i < NumberOfSides; i++)
+            {
+                CoordinatesOfTheVertices[i].X = (float)(Position.X + GetCircumscribedCircleRadius() * Math.Cos(2.0 * Math.PI / NumberOfSides * i));
+                CoordinatesOfTheVertices[i].Y = (float)(Position.Y + GetCircumscribedCircleRadius() * Math.Sin(2.0 * Math.PI / NumberOfSides * i));
+            }
+        }
+
+        public PointF[] GetCoordinatesOfTheVertices(PointF[] CoordinatesOfTheVertices)
+        {
+            SetCoordinatesOfTheVertices();
+            return CoordinatesOfTheVertices;
+        }
+
+        public override void DrawFigure(Graphics gr)
+        {
+            gr.DrawPolygon(new Pen(Color, 3), GetCoordinatesOfTheVertices(CoordinatesOfTheVertices));
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
         }
 
         public void GetInfo()
@@ -115,9 +149,9 @@
             return (AB * BC * CA) / (4.0 * GetArea());
         }
 
-        public override Point GetCenter()
+        public override PointF GetCenter()
         {
-            return new Point((int)(Position.X + GetCircumscribedCircleRadius()), (int)(Position.Y + GetCircumscribedCircleRadius()));
+            return new PointF((float)(Position.X + GetCircumscribedCircleRadius()), (float)(Position.Y + GetCircumscribedCircleRadius()));
         }
 
         public void GetInfo()
@@ -152,7 +186,7 @@
             return AB + BC + CD + DA;
         }
 
-        public override Point GetCenter()
+        public override PointF GetCenter()
         {
             return new (0, 0);
         }
@@ -185,9 +219,15 @@
             return 2.0 * (Height + Width);
         }
 
-        public override Point GetCenter()
+        public override PointF GetCenter()
         {
-            return new Point((int)(Position.X + Width / 2), (int)(Position.Y + Height / 2));
+            return new PointF((int)(Position.X + Width / 2), (int)(Position.Y + Height / 2));
+        }
+
+        public override void DrawFigure(Graphics gr)
+        {
+            gr.DrawRectangle(new Pen(Color, 3), (float)Position.X, (float)Position.Y, (float)Width, (float)Height);
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
         }
 
         public void GetInfo()
