@@ -1,10 +1,17 @@
-﻿namespace GeometricFigures
+﻿using VectorAlgebra;
+
+namespace GeometricFigures
 {
     public abstract class MyGeometricFigure
     {
         public string? Name { get; set; }
         public Color Color { get; set; }
         public PointF Position { get; set; }
+        public PointF[]? VerticesCoordinates;
+        public static PointF[] GetVerticesCoordinates(PointF[] VerticesCoordinates)
+        {
+            return VerticesCoordinates;
+        }
         public abstract double GetArea();
         public abstract double GetPerimeter();
         public abstract PointF GetCenter();
@@ -46,7 +53,8 @@
                 $"Имя фигруры: { GetName() }\n" +
                 $"Длина окружности: { GetPerimeter() }\n" +
                 $"Площадь: { GetArea() }\n" +
-                $"Радиус: R = { Radius }\n"
+                $"Радиус: R = { Radius }\n" +
+                $"Координаты центра окружности: { Position }\n"
             );
         }
     }
@@ -56,11 +64,11 @@
         public double SideLength { get; set; }
         protected virtual double NumberOfSides { get; }
         // public double NumberOfSides;
-        public PointF[] CoordinatesOfTheVertices;
 
         public MyRegularPolygon()
         {
-            CoordinatesOfTheVertices = new PointF[(int)NumberOfSides];
+            VerticesCoordinates = new PointF[(int)NumberOfSides];
+            SetCoordinatesOfTheVertices();
         }
 
         public override double GetArea()
@@ -91,20 +99,14 @@
         {
             for (long i = 0; i < NumberOfSides; i++)
             {
-                CoordinatesOfTheVertices[i].X = (float)(Position.X + GetCircumscribedCircleRadius() * Math.Cos(2.0 * Math.PI / NumberOfSides * i));
-                CoordinatesOfTheVertices[i].Y = (float)(Position.Y + GetCircumscribedCircleRadius() * Math.Sin(2.0 * Math.PI / NumberOfSides * i));
+                VerticesCoordinates[i].X = (float)(Position.X + GetCircumscribedCircleRadius() * Math.Cos(2.0 * Math.PI / NumberOfSides * i));
+                VerticesCoordinates[i].Y = (float)(Position.Y + GetCircumscribedCircleRadius() * Math.Sin(2.0 * Math.PI / NumberOfSides * i));
             }
-        }
-
-        public PointF[] GetCoordinatesOfTheVertices(PointF[] CoordinatesOfTheVertices)
-        {
-            SetCoordinatesOfTheVertices();
-            return CoordinatesOfTheVertices;
         }
 
         public override void DrawFigure(Graphics gr)
         {
-            gr.DrawPolygon(new Pen(Color, 3), GetCoordinatesOfTheVertices(CoordinatesOfTheVertices));
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
             gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
         }
 
@@ -117,16 +119,28 @@
                 $"Площадь: { GetArea() }\n" +
                 $"Длина стороны: { SideLength }\n" +
                 $"Радиус вписанной окружности: { GetInscribedCircleRadius() }\n" +
-                $"Радиус описанной окружности: { GetCircumscribedCircleRadius() }\n"
+                $"Радиус описанной окружности: { GetCircumscribedCircleRadius() }\n" +
+                $"Координаты вершин: { GetVerticesCoordinates(VerticesCoordinates) }\n"
             );
         }
     }
 
     public class MyTriangle : MyGeometricFigure
     {
-        public double AB { get; set; }
-        public double BC { get; set; }
-        public double CA { get; set; }
+        public PointF A { get; set; }
+        public PointF B { get; set; }
+        public PointF C { get; set; }
+
+        public double AB, BC, CA;
+
+        public MyTriangle()
+        {
+            VerticesCoordinates = new PointF[] { A, B, C };
+
+            AB = MyVectorAlgebra.GetVectorLength(A, B);
+            BC = MyVectorAlgebra.GetVectorLength(B, C);
+            CA = MyVectorAlgebra.GetVectorLength(C, A);
+        }
 
         public override double GetArea()
         {
@@ -154,6 +168,12 @@
             return new PointF((float)(Position.X + GetCircumscribedCircleRadius()), (float)(Position.Y + GetCircumscribedCircleRadius()));
         }
 
+        public override void DrawFigure(Graphics gr)
+        {
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
+        }
+
         public void GetInfo()
         {
             Console.WriteLine
@@ -161,19 +181,34 @@
                 $"Имя фигруры: { GetName() }\n" +
                 $"Периметр: { GetPerimeter() }\n" +
                 $"Площадь: { GetArea() }\n" +
-                $"Длины сторон: AB = { AB }, BC = { BC }, CA = { CA }\n"
+                $"Длины сторон: AB = { AB }, BC = { BC }, CA = { CA }\n" +
+                $"Координаты вершин: A{ A }, B{ B }, C{ C }\n"
             );
         }
     }
 
     public class MyQuadrangle : MyGeometricFigure
     {
-        public double AB { get; set; }
-        public double BC { get; set; }
-        public double CD { get; set; }
-        public double DA { get; set; }
-        public double AngleAlpha { get; set; }
-        public double AngleBeta { get; set; }
+        public PointF A { get; set; }
+        public PointF B { get; set; }
+        public PointF C { get; set; }
+        public PointF D { get; set; }
+
+        public double AB, BC, CD, DA;
+        public double AngleAlpha, AngleBeta;
+
+        public MyQuadrangle()
+        {
+            VerticesCoordinates = new PointF[] { A, B, C, D };
+
+            AB = MyVectorAlgebra.GetVectorLength(A, B);
+            BC = MyVectorAlgebra.GetVectorLength(B, C);
+            CD = MyVectorAlgebra.GetVectorLength(C, D);
+            DA = MyVectorAlgebra.GetVectorLength(D, A);
+
+            AngleAlpha = MyVectorAlgebra.GetAngleV(MyVectorAlgebra.GetVectorCoordinatesV(A, B), MyVectorAlgebra.GetVectorCoordinatesV(A, D));
+            AngleBeta = MyVectorAlgebra.GetAngleV(MyVectorAlgebra.GetVectorCoordinatesV(C, B), MyVectorAlgebra.GetVectorCoordinatesV(C, D));
+        }
 
         public override double GetArea()
         {
