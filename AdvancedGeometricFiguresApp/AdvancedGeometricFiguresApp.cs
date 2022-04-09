@@ -5,7 +5,7 @@ Console.WriteLine("Created by Kozlov D., group VPI-31.");
 
 Console.WriteLine();
 
-MyRectangle Rectangle1 = new MyRectangle() { Name = "Прямоугольник ABCD", Width = 120.0, Height = 80.0, Color = Color.Red, Position = new Point(50, 50) };
+//MyRectangle Rectangle1 = new MyRectangle() { Name = "Прямоугольник ABCD", Width = 120.0, Height = 80.0, Color = Color.Red, Position = new Point(50, 50) };
 
 MyGeometricFigure[] MyFigures = {
     new MyRectangle() {
@@ -17,10 +17,10 @@ MyGeometricFigure[] MyFigures = {
     },
     new MyRectangle() {
         Name = "Прямоугольник EFGH",
-        Width = 55.0,
-        Height = 25.0,
+        Width = 375.0,
+        Height = 175.0,
         Color = Color.Green,
-        Position = new Point(50, 100)
+        Position = new Point(50, 400)
     },
     new MyRectangle() {
         Name = "Прямоугольник IJKL",

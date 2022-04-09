@@ -43,7 +43,7 @@ namespace GeometricFigures
         public override void DrawFigure(Graphics gr)
         {
             gr.DrawEllipse(new Pen(Color, 3), new RectangleF((float)Position.X, (float)Position.Y, (float)(2.0 * Radius), (float)(2.0 * Radius)));
-            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, GetCenter());
         }
 
         public void GetInfo()
@@ -63,7 +63,9 @@ namespace GeometricFigures
     {
         public double SideLength { get; set; }
         protected virtual double NumberOfSides { get; }
+        protected virtual double RotateAngle { get; }
         // public double NumberOfSides;
+        // protected double NumberOfSides;
 
         public MyRegularPolygon()
         {
@@ -99,15 +101,15 @@ namespace GeometricFigures
         {
             for (long i = 0; i < NumberOfSides; i++)
             {
-                VerticesCoordinates[i].X = (float)(Position.X + GetCircumscribedCircleRadius() * Math.Cos(2.0 * Math.PI / NumberOfSides * i));
-                VerticesCoordinates[i].Y = (float)(Position.Y + GetCircumscribedCircleRadius() * Math.Sin(2.0 * Math.PI / NumberOfSides * i));
+                VerticesCoordinates[i].X = (float)(Position.X + GetCircumscribedCircleRadius() * Math.Cos(RotateAngle + 2.0 * Math.PI / NumberOfSides * i));
+                VerticesCoordinates[i].Y = (float)(Position.Y + GetCircumscribedCircleRadius() * Math.Sin(RotateAngle + 2.0 * Math.PI / NumberOfSides * i));
             }
         }
 
         public override void DrawFigure(Graphics gr)
         {
             gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
-            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, GetCenter());
         }
 
         public void GetInfo()
@@ -171,7 +173,7 @@ namespace GeometricFigures
         public override void DrawFigure(Graphics gr)
         {
             gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
-            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, GetCenter());
         }
 
         public void GetInfo()
@@ -226,6 +228,12 @@ namespace GeometricFigures
             return new (0, 0);
         }
 
+        public override void DrawFigure(Graphics gr)
+        {
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, GetCenter());
+        }
+
         public void GetInfo()
         {
             Console.WriteLine
@@ -256,13 +264,13 @@ namespace GeometricFigures
 
         public override PointF GetCenter()
         {
-            return new PointF((int)(Position.X + Width / 2), (int)(Position.Y + Height / 2));
+            return new PointF((float)(Position.X + Width / 2.0), (float)(Position.Y + Height / 2.0));
         }
 
         public override void DrawFigure(Graphics gr)
         {
             gr.DrawRectangle(new Pen(Color, 3), (float)Position.X, (float)Position.Y, (float)Width, (float)Height);
-            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, GetCenter());
         }
 
         public void GetInfo()
@@ -284,9 +292,27 @@ namespace GeometricFigures
     {
         public double Height { get; set; }
 
+        public MyTrapeze()
+        {
+            VerticesCoordinates = new PointF[] { A, B, C, D };
+
+            AB = MyVectorAlgebra.GetVectorLength(A, B);
+            BC = MyVectorAlgebra.GetVectorLength(B, C);
+            CD = MyVectorAlgebra.GetVectorLength(C, D);
+            DA = MyVectorAlgebra.GetVectorLength(D, A);
+
+            Height = DA * Math.Sin(MyVectorAlgebra.GetAngleV(MyVectorAlgebra.GetVectorCoordinatesV(A, B), MyVectorAlgebra.GetVectorCoordinatesV(A, D)));
+        }
+
         public override double GetArea()
         {
             return (AB + CD) / 2.0 * Height;
+        }
+
+        public override void DrawFigure(Graphics gr)
+        {
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, GetCenter());
         }
 
         public new void GetInfo()
@@ -307,8 +333,14 @@ namespace GeometricFigures
         public double Angle { get; set; }
         public override double GetArea()
         {
-            return AB * DA * Math.Sin(Angle * Math.PI / 180.0);
+            return AB * DA * Math.Sin(MyVectorAlgebra.GetAngleV(MyVectorAlgebra.GetVectorCoordinatesV(A, B), MyVectorAlgebra.GetVectorCoordinatesV(A, D)));
         }
+
+        /*public override void DrawFigure(Graphics gr)
+        {
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
+            gr.DrawString(GetCenter().ToString(), new Font("Consolas", 8), Brushes.Black, GetCenter());
+        }*/
 
         public new void GetInfo()
         {
@@ -327,13 +359,13 @@ namespace GeometricFigures
     {
         public override double GetArea()
         {
-            return Math.Pow(AB, 2.0) * Math.Sin(Angle * Math.PI / 180.0);
+            return Math.Pow(AB, 2.0) * Math.Sin(MyVectorAlgebra.GetAngleV(MyVectorAlgebra.GetVectorCoordinatesV(A, B), MyVectorAlgebra.GetVectorCoordinatesV(A, D)));
         }
 
-        public override double GetPerimeter()
+        /*public override double GetPerimeter()
         {
             return 4.0 * AB;
-        }
+        }*/
         public new void GetInfo()
         {
             Console.WriteLine
