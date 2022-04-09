@@ -70,7 +70,6 @@ namespace GeometricFigures
         public MyRegularPolygon()
         {
             VerticesCoordinates = new PointF[(int)NumberOfSides];
-            SetCoordinatesOfTheVertices();
         }
 
         public override double GetArea()
@@ -108,6 +107,7 @@ namespace GeometricFigures
 
         public override void DrawFigure(Graphics gr)
         {
+            SetCoordinatesOfTheVertices();
             gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
             gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, GetCenter());
         }
@@ -383,7 +383,8 @@ namespace GeometricFigures
     public class MySquare : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 4.0;
-        /*public Square()
+        protected override double RotateAngle { get; } = (-1.0) * Math.PI / 4.0;
+        /*public MySquare()
         {
             NumberOfSides = 4.0;
         }*/
@@ -392,6 +393,7 @@ namespace GeometricFigures
     public class Pentagon : MyRegularPolygon
     {
         protected override double NumberOfSides { get; } = 5.0;
+        protected override double RotateAngle { get; } = (-1.0) * Math.PI / 10.0;
         /*public Pentagon()
         {
             NumberOfSides = 5.0;

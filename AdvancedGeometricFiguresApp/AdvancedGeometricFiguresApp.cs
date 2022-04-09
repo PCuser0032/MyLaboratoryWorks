@@ -8,26 +8,65 @@ Console.WriteLine();
 //MyRectangle Rectangle1 = new MyRectangle() { Name = "Прямоугольник ABCD", Width = 120.0, Height = 80.0, Color = Color.Red, Position = new Point(50, 50) };
 
 MyGeometricFigure[] MyFigures = {
-    new MyRectangle() {
+   /* new SomePolygon() {
     Name = "Прямоугольник ABCD",
-    Width = 120.0,
-    Height = 80.0,
-    Color = Color.Red,
-    Position = new Point(50, 50)
+    Color = Color.Red
+    //Position = new Point(50, 50)
+    },*/
+    /*new MyTriangle()
+    {
+        Name = "Triangle",
+        Color = Color.Orange,
+    }*/
+
+    new MySquare()
+    {
+        Name = "Pentagon",
+        SideLength = 100.0,
+        Color = Color.Red,
+        Position = new PointF(540.0F, 540.0F)
     },
-    new MyRectangle() {
-        Name = "Прямоугольник EFGH",
-        Width = 375.0,
-        Height = 175.0,
-        Color = Color.Green,
-        Position = new Point(50, 400)
+    new Pentagon()
+    {
+        Name = "Pentagon",
+        SideLength = 125.0,
+        Color = Color.Blue,
+        Position = new PointF(540.0F, 540.0F)
     },
-    new MyRectangle() {
-        Name = "Прямоугольник IJKL",
-        Width = 225.0,
-        Height = 105.0,
+    new Hexagon()
+    {
+        Name = "Hexagon",
+        SideLength = 150.0,
+        Color = Color.Orange,
+        Position = new PointF(540.0F, 540.0F)
+    },
+    new Heptagon()
+    {
+        Name = "Heptagon",
+        SideLength = 175.0,
         Color = Color.Purple,
-        Position = new Point(50, 150)
+        Position = new PointF(540.0F, 540.0F)
+    },
+    new Octagon()
+    {
+        Name = "Heptagon",
+        SideLength = 200.0,
+        Color = Color.Cyan,
+        Position = new PointF(540.0F, 540.0F)
+    },
+    new Nonagon()
+    {
+        Name = "Heptagon",
+        SideLength = 225.0,
+        Color = Color.Black,
+        Position = new PointF(540.0F, 540.0F)
+    },
+    new Decagon()
+    {
+        Name = "Decagon",
+        SideLength = 250.0,
+        Color = Color.Yellow,
+        Position = new PointF(540.0F, 540.0F)
     }
 };
 
@@ -35,7 +74,7 @@ Form MyForm = new Form()
 {
     BackColor = Color.FromArgb(156, 156, 156),
     Text = "Advanced Drawing Figures",
-    Size = new Size(800, 800),
+    Size = new Size(1080, 1080),
     StartPosition = FormStartPosition.CenterScreen
 };
 
