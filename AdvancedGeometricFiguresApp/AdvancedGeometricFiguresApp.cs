@@ -8,73 +8,83 @@ Console.WriteLine();
 //MyRectangle Rectangle1 = new MyRectangle() { Name = "Прямоугольник ABCD", Width = 120.0, Height = 80.0, Color = Color.Red, Position = new Point(50, 50) };
 
 MyGeometricFigure[] MyFigures = {
-   /* new SomePolygon() {
-    Name = "Прямоугольник ABCD",
-    Color = Color.Red
-    //Position = new Point(50, 50)
-    },*/
-    /*new MyTriangle()
+    new MyRegularPolygon(4.0, 75.0, new PointF(301.0F, 320.0F))
     {
-        Name = "Triangle",
-        Color = Color.Orange,
-    }*/
-
-    new MySquare()
-    {
-        Name = "Pentagon",
-        SideLength = 100.0,
-        Color = Color.Red,
-        Position = new PointF(540.0F, 540.0F)
+        Name = "Квадрат ABCD"
     },
-    new Pentagon()
+    new MyRegularPolygon(5.0, 100.0, new PointF(295.0F, 320.0F))
     {
-        Name = "Pentagon",
-        SideLength = 125.0,
-        Color = Color.Blue,
-        Position = new PointF(540.0F, 540.0F)
+        Name = "Пятиугольник ABCDE"
     },
-    new Hexagon()
+    new MyRegularPolygon(6.0, 125.0, new PointF(295.0F, 320.0F))
     {
-        Name = "Hexagon",
-        SideLength = 150.0,
-        Color = Color.Orange,
-        Position = new PointF(540.0F, 540.0F)
+        Name = "Шестиугольник ABCDEF"
     },
-    new Heptagon()
+    new MyRegularPolygon(7.0, 150.0, new PointF(315.0F, 315.0F))
     {
-        Name = "Heptagon",
-        SideLength = 175.0,
-        Color = Color.Purple,
-        Position = new PointF(540.0F, 540.0F)
+        Name = "Семиугольник ABCDEFG"
     },
-    new Octagon()
+    new MyRegularPolygon(8.0, 175.0, new PointF(335.0F, 335.0F))
     {
-        Name = "Heptagon",
-        SideLength = 200.0,
-        Color = Color.Cyan,
-        Position = new PointF(540.0F, 540.0F)
+        Name = "Восьмиугольник ABCDEFGH"
     },
-    new Nonagon()
+    new MyRegularPolygon(9.0, 200.0, new PointF(355.0F, 355.0F))
     {
-        Name = "Heptagon",
-        SideLength = 225.0,
-        Color = Color.Black,
-        Position = new PointF(540.0F, 540.0F)
+        Name = "Девятиугольник ABCDEFGHI"
     },
-    new Decagon()
+    new MyRegularPolygon(10.0, 225.0, new PointF(375.0F, 375.0F))
     {
-        Name = "Decagon",
-        SideLength = 250.0,
-        Color = Color.Yellow,
-        Position = new PointF(540.0F, 540.0F)
+        Name = "Десятиугольник ABCDEFGHIJ"
+    },
+    new MyCircle()
+    {
+        Name = "Окружность O",
+        Radius = 125.0,
+        Position = new PointF(700.0F, 25.0F),
+        Color = Color.Red
+    },
+    new MyTriangle(new PointF(951.254F, 25.7852F), new PointF(1220.45F,165.62475F), new PointF(1021.717F, 275.785F))
+    {
+        Name = "Треугольник ABC",
+        Color = Color.Green
+    },
+    // new PointF(1200.0F, 25.0F), new PointF(1475.0F, 285.0F), new PointF(1820.0F, 275.0F), new PointF(1700.0F, 100.0F)
+    // new PointF(1700.0F, 100.0F), new PointF(1820.0F, 275.0F), new PointF(1475.0F, 285.0F), new PointF(1200.0F, 25.0F)
+    new MyQuadrangle(new PointF(1200.0F, 25.0F), new PointF(1475.0F, 285.0F), new PointF(1820.0F, 275.0F), new PointF(1700.0F, 100.0F))
+    {
+        Name = "Четырёхугольник ABCD",
+        Color = Color.Purple
+    },
+    new MyRectangle()
+    {
+        Name = "Прямоугольник ABCD",
+        Color = Color.DarkMagenta,
+        Width = 400.0,
+        Height = 250.0,
+        Position = new PointF(800.1257F, 353.33F)
+    },
+    new MyTrapeze(new PointF(1875.0F, 575.0F), new PointF(1250.0F, 575.0F), new PointF(1355.0F, 325.0F), new PointF(1675.0F, 325.0F))
+    {
+        Name = "Трапеция ABCD",
+        Color = Color.DeepSkyBlue
+    },
+    new MyParallelogram(new PointF(875.0F, 875.0F), new PointF(500.0F, 875.0F), new PointF(855.0F, 650.0F), new PointF(1175.0F, 650.0F))
+    {
+        Name = "Параллелограм ABCD",
+        Color = Color.DarkSlateGray
+    },
+    new MyRhombus(new PointF(1400.0F, 850.0F), new PointF(1200.0F, 750.0F), new PointF(1400.0F, 650.0F), new PointF(1600.0F, 750.0F))
+    {
+        Name = "Ромб ABCD",
+        Color = Color.Coral
     }
 };
 
 Form MyForm = new Form()
 {
-    BackColor = Color.FromArgb(156, 156, 156),
+    BackColor = Color.FromArgb(255, 255, 255),
     Text = "Advanced Drawing Figures",
-    Size = new Size(1080, 1080),
+    Size = new Size(1920, 1080),
     StartPosition = FormStartPosition.CenterScreen
 };
 
