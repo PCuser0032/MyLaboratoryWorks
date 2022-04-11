@@ -80,6 +80,11 @@ MyGeometricFigure[] MyFigures = {
     }
 };
 
+foreach (MyGeometricFigure Figure in MyFigures)
+{
+    Figure.GetInfo();
+}
+
 Form MyForm = new Form()
 {
     BackColor = Color.FromArgb(255, 255, 255),

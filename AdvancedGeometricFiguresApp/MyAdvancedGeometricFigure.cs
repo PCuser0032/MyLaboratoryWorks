@@ -8,7 +8,7 @@ namespace GeometricFigures
         public Color Color { get; set; }
         public PointF Position { get; set; }
         public PointF[]? VerticesCoordinates;
-        public static PointF[] GetVerticesCoordinates(PointF[] VerticesCoordinates)
+        public PointF[]? GetVerticesCoordinates()
         {
             return VerticesCoordinates;
         }
@@ -34,7 +34,7 @@ namespace GeometricFigures
             Console.WriteLine
             (
                 $"Имя фигруры: { GetName() }\n" +
-                $"Длина окружности: { GetPerimeter() }\n" +
+                $"Периметр: { GetPerimeter() }\n" +
                 $"Площадь: { GetArea() }"
             );
         }
@@ -90,7 +90,7 @@ namespace GeometricFigures
             SetCoordinatesOfTheVertices();
         }
 
-        public MyRegularPolygon(double NumberOfSides, double SideLength, PointF Position)
+        public MyRegularPolygon(double NumberOfSides, double SideLength, PointF Position) : base()
         {
             this.NumberOfSides = NumberOfSides;
             this.SideLength = SideLength;
@@ -153,8 +153,25 @@ namespace GeometricFigures
 
         public override void DrawFigure(Graphics gr)
         {
-            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates());
             gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, new PointF(GetCenter().X, GetCenter().Y + (float)GetCircumscribedCircleRadius()));
+        }
+
+        public PointF[]? GetVerticesCoordinates()
+        {
+            return VerticesCoordinates;
+        }
+
+        public string GetVerticesCoordinatesInfo()
+        {
+            string VerticesCoordinatesStr = "";
+
+            foreach (PointF VertexCoordinates in VerticesCoordinates)
+            {
+                VerticesCoordinatesStr += " " + VertexCoordinates.ToString();
+            }
+
+            return VerticesCoordinatesStr;
         }
 
         public override void GetInfo()
@@ -165,7 +182,7 @@ namespace GeometricFigures
                 $"Длина стороны: { SideLength }\n" +
                 $"Радиус вписанной окружности: { GetInscribedCircleRadius() }\n" +
                 $"Радиус описанной окружности: { GetCircumscribedCircleRadius() }\n" +
-                $"Координаты вершин: { GetVerticesCoordinates(VerticesCoordinates) }\n"
+                $"Координаты вершин:{ GetVerticesCoordinatesInfo() }\n"
             );
         }
     }
@@ -224,7 +241,7 @@ namespace GeometricFigures
 
         public override void DrawFigure(Graphics gr)
         {
-            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates());
             gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, new PointF(GetCenter().X, GetCenter().Y + (float)GetCircumscribedCircleRadius()));
             gr.FillEllipse(Brushes.Red, GetCenter().X - 7.5F, GetCenter().Y - 7.5F, 15.0F, 15.0F);
         }
@@ -326,7 +343,7 @@ namespace GeometricFigures
 
         public override void DrawFigure(Graphics gr)
         {
-            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates(VerticesCoordinates));
+            gr.DrawPolygon(new Pen(Color, 3), GetVerticesCoordinates());
             gr.DrawString(GetCenter().ToString(), new Font("Consolas", 10), Brushes.Black, new PointF(GetCenter().X, GetCenter().Y + 7.5F));
             gr.FillEllipse(Brushes.Red, GetCenter().X - 7.5F, GetCenter().Y - 7.5F, 15.0F, 15.0F);
         }
@@ -480,7 +497,7 @@ namespace GeometricFigures
                 $"Периметр: { GetPerimeter() }\n" +
                 $"Площадь: { GetArea() }\n" +
                 $"Длины сторон: AB = CD = { AB }, BC = DA = { DA }\n" +
-                $"Угол между сторонами AB и DA: { Angle }\n"
+                $"Угол между сторонами AB и DA: { Angle * 180.0 / Math.PI}\n"
             );
         }
     }
@@ -504,7 +521,7 @@ namespace GeometricFigures
                 $"Периметр: { GetPerimeter() }\n" +
                 $"Площадь: { GetArea() }\n" +
                 $"Длина стороны: { AB }\n" +
-                $"Угол между сторонами AB и DA: { Angle }\n"
+                $"Угол между сторонами AB и DA: { Angle * 180.0 / Math.PI }\n"
             );
         }
 
@@ -520,6 +537,9 @@ namespace GeometricFigures
             NumberOfSides = 4.0;
             SetCoordinatesOfTheVertices();
         }*/
+        public MySquare(double NumberOfSides, double SideLength, PointF Position) : base(NumberOfSides, SideLength, Position)
+        {
+        }
     }
 
     public class Pentagon : MyRegularPolygon
@@ -532,6 +552,9 @@ namespace GeometricFigures
             NumberOfSides = 5.0;
             SetCoordinatesOfTheVertices();
         }*/
+        public Pentagon(double NumberOfSides, double SideLength, PointF Position) : base(NumberOfSides, SideLength, Position)
+        {
+        }
     }
 
     public class Hexagon : MyRegularPolygon
@@ -541,6 +564,9 @@ namespace GeometricFigures
         {
             NumberOfSides = 6.0;
         }*/
+        public Hexagon(double NumberOfSides, double SideLength, PointF Position) : base(NumberOfSides, SideLength, Position)
+        {
+        }
     }
 
     public class Heptagon : MyRegularPolygon
@@ -550,6 +576,9 @@ namespace GeometricFigures
         {
             NumberOfSides = 7.0;
         }*/
+        public Heptagon(double NumberOfSides, double SideLength, PointF Position) : base(NumberOfSides, SideLength, Position)
+        {
+        }
     }
 
     public class Octagon : MyRegularPolygon
@@ -559,6 +588,9 @@ namespace GeometricFigures
         {
             NumberOfSides = 8.0;
         }*/
+        public Octagon(double NumberOfSides, double SideLength, PointF Position) : base(NumberOfSides, SideLength, Position)
+        {
+        }
     }
 
     public class Nonagon : MyRegularPolygon
@@ -568,6 +600,9 @@ namespace GeometricFigures
         {
             NumberOfSides = 9.0;
         }*/
+        public Nonagon(double NumberOfSides, double SideLength, PointF Position) : base(NumberOfSides, SideLength, Position)
+        {
+        }
     }
 
     public class Decagon : MyRegularPolygon
@@ -577,5 +612,8 @@ namespace GeometricFigures
         {
             NumberOfSides = 10.0;
         }*/
+        public Decagon(double NumberOfSides, double SideLength, PointF Position) : base(NumberOfSides, SideLength, Position)
+        {
+        }
     }
 }
